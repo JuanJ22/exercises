@@ -12,10 +12,15 @@ Escribe un programa en ensamblador que realice los siguientes:
 5. Restar `10h` al resultado.
 6. Llamar al procedimiento `DumpRegs` para visualizar el estado final de los registros en la consola.
 7. Para finalizar muestre los datos ingresados desde teclado, las operaciones aritméticas y el estado de los registros el formato debe ser el siguiente(Obligatorio):
+   
    **Mi nombre es:** JUAN JOSE SANTOS
+   
    **Mi correo institucional es:** juan.santos@mail.utec.edu.sv
+   
    **El resultado de la suma es:**
+   
    **El resultado de la resta es:**
+   
    **El estado de los registros es:**   
 
 ## 💻 Estructura del Código
