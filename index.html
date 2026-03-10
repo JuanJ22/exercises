@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Assembly Lab Challenge</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#0f172a;
+color:white;
+text-align:center;
+padding:30px;
+}
+
+h1{
+color:#38bdf8;
+}
+
+.panel{
+background:#1e293b;
+padding:20px;
+border-radius:10px;
+margin:20px auto;
+width:70%;
+box-shadow:0 0 10px rgba(0,0,0,0.4);
+}
+
+.mission{
+background:#334155;
+padding:15px;
+margin:10px;
+border-radius:8px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.mission:hover{
+background:#475569;
+}
+
+.locked{
+opacity:0.4;
+cursor:not-allowed;
+}
+
+.points{
+font-size:22px;
+color:#4ade80;
+}
+
+.progress{
+height:20px;
+background:#334155;
+border-radius:10px;
+margin-top:10px;
+}
+
+.bar{
+height:100%;
+width:0%;
+background:#22c55e;
+border-radius:10px;
+transition:0.5s;
+}
+
+.timer{
+font-size:20px;
+color:#facc15;
+}
+
+pre{
+background:#020617;
+padding:10px;
+border-radius:5px;
+text-align:left;
+}
+
+button{
+padding:10px 20px;
+border:none;
+background:#22c55e;
+color:white;
+border-radius:5px;
+cursor:pointer;
+margin-top:10px;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>Assembly Lab Challenge</h1>
+
+<div class="panel">
+<div class="points">Puntos: <span id="score">0</span></div>
+<div class="timer">Tiempo: <span id="time">90</span> s</div>
+
+<div class="progress">
+<div class="bar" id="bar"></div>
+</div>
+</div>
+
+<div class="panel">
+
+<div class="mission" onclick="complete(1)">
+<b>Misión 1</b><br>
+Recorrer una cadena usando direccionamiento indirecto y mostrar cada carácter.
+</div>
+
+<div class="mission locked" id="m2" onclick="complete(2)">
+<b>Misión 2</b><br>
+Sumar los números pares de un arreglo.
+</div>
+
+<div class="mission locked" id="m3" onclick="complete(3)">
+<b>Misión 3</b><br>
+Calcular el producto ponderado de un arreglo usando IMUL.
+</div>
+
+<div class="mission locked" id="m4" onclick="complete(4)">
+<b>Misión 4</b><br>
+Resolver la ecuación:
+<pre>
+((var1 * 4) + (var2 * 3)) / (var3 % var4)
+</pre>
+</div>
+
+</div>
+
+<script>
+
+let score=0
+let missions=0
+
+function complete(n){
+
+if(n===1){
+score+=25
+missions++
+unlock("m2")
+}
+
+if(n===2){
+score+=25
+missions++
+unlock("m3")
+}
+
+if(n===3){
+score+=25
+missions++
+unlock("m4")
+}
+
+if(n===4){
+score+=25
+missions++
+alert("Misión final completada 🎉")
+}
+
+update()
+
+}
+
+function unlock(id){
+document.getElementById(id).classList.remove("locked")
+}
+
+function update(){
+
+document.getElementById("score").innerText=score
+
+let progress=(missions/4)*100
+document.getElementById("bar").style.width=progress+"%"
+
+}
+
+let time=90
+
+setInterval(function(){
+
+time--
+document.getElementById("time").innerText=time
+
+if(time<=0){
+alert("Tiempo terminado")
+location.reload()
+}
+
+},1000)
+
+</script>
+
+</body>
+</html>
